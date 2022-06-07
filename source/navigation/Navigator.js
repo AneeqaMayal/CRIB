@@ -1,12 +1,27 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
+import * as React from 'react';
+//-----------Navigation-----------//
+import { createStackNavigator } from '@react-navigation/stack';
+//----------Main Screens----------//
+//-------Welcome Screen--------
+import Splash from "../main/Splash";
+import ImageView from "../main/ImageView"
 
-class Cat extends Component {
-  render() {
-    return (
-      <Text>Hello, I am your cat!</Text>
-    );
-  }
+const Stack = createStackNavigator();
+
+function Navigator() {
+  return (
+
+    <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      animation: 'slide_from_bottom',
+    }}>
+      {/* Splash Screen */}
+      <Stack.Screen name="ImageView" component={ImageView} />
+      <Stack.Screen name="Splash" component={Splash} />
+    </Stack.Navigator>
+
+  );
 }
 
-export default Cat;
+export default Navigator;

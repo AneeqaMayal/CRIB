@@ -1,12 +1,12 @@
-import { Text, View } from 'react-native'
 import React, { Component } from 'react'
-
+import { NavigationContainer } from '@react-navigation/native';
+import Navigator from "./source/navigation/Navigator"
 export default class App extends Component {
   render() {
     return (
-      <View>
-        <Text>App</Text>
-      </View>
+      <NavigationContainer>
+        <Navigator />
+        </NavigationContainer>
     )
   }
 }
