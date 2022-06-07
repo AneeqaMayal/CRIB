@@ -1,22 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StatusBar, FlatList,ScrollView } from 'react-native';
+import { Text, View, Image, StatusBar, FlatList, ScrollView } from 'react-native';
 import PrimaryButton from '../reuseable/PrimaryButton';
 const Data = [
   {
     id: '1',
-    title: 'Faisal Ayaz',
+    title: 'Name:',
+    title2: ' Muhammad Faisal Ayaz',
   },
   {
     id: '2',
-    title: 'Muhammad Ayaz'
+    title: 'Father Name:',
+    title2: 'Muhammad Ayaz'
   },
   {
     id: '3',
-    title: '0312345678',
+    title: "Phone No:",
+    title2: '+92312345678',
   },
   {
     id: '4',
-    title: 'House No 14,Scheme 1,Gulshan Iqbal,RYK',
+    title: 'Address:',
+    title2: "House 14,Scheme 1,Gulshan Usman,RYK",
+  },
+  {
+    id: '5',
+    title: 'CNIC:',
+    title2: '31303-1234566-8',
   },
 ];
 class Cat extends Component {
@@ -28,15 +37,14 @@ class Cat extends Component {
         <Image
           style={{
             alignSelf: "center",
-            width: 300,
-            height: 150,
+            width:"80%",
             borderRadius: 20,
-            marginTop: "5%"
+            marginTop:10
           }}
           source={require('../assets/images/user.png')}
         />
         {/* Criminal Details */}
-        <View>
+        <View style={{alignContent:"center"}}>
           <FlatList
             showsHorizontalScrollIndicator={true}
             horizontal={false}
@@ -46,18 +54,28 @@ class Cat extends Component {
               return (
                 <View
                   style={{
-                    marginHorizontal: "10%",
-                    marginTop: 20
+                    marginTop:20,
                   }}>
-
-                  <Text style={{
-                    color: "#000",
-                    fontFamily: "Poppins-Bold",
-                    fontWeight:'bold',
-                    fontSize: 18,
-                  }}>
-                    {item.item.title}
-                  </Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                    marginLeft:"10%"
+                    }}>
+                    <Text style={{
+                      color: "#000",
+                      fontWeight: 'bold',
+                      fontSize: 18,
+                    }}>
+                      {item.item.title}
+                    </Text>
+                    <Text style={{
+                      color: "#000",
+                      fontSize: 15,
+                      marginHorizontal:"10%",
+                    }}>
+                      {item.item.title2}
+                    </Text>
+                  </View>
                 </View>
               );
             }}
@@ -69,7 +87,7 @@ class Cat extends Component {
           color: "#000063",
           fontFamily: "Poppins-Bold",
           fontSize: 20,
-          marginTop: 20,
+          marginTop: 5,
           textAlign: "center"
         }}>
           Previous Case
@@ -79,29 +97,29 @@ class Cat extends Component {
           fontFamily: "Poppins-Bold",
           fontWeight: "bold",
           fontSize: 18,
-          marginTop: 10,
+          marginTop: 5,
           textAlign: "center"
         }}>
           Section 302
         </Text>
 
-      {/* Case Description */}
+        {/* Case Description */}
         <Text style={{
           color: "#000",
           fontFamily: "Poppins-Bold",
           fontSize: 18,
           marginHorizontal: "10%",
-          marginTop:20
+          marginTop:5
         }}>
           Case Description:
         </Text>
         <View style={{
-          width: 300,
-          height: 180,
+          width:"80%",
+          height: 170,
           backgroundColor: "#F2F2F7",
           justifyContent: "center",
           alignSelf: "center",
-          marginTop: 10,
+          marginTop:5,
         }}>
           <Text style={{
             fontSize: 18,
