@@ -1,14 +1,16 @@
 import { Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-function PrimaryButton({ title, onPress,bgStyle }) {
+function SecondaryButton({ title, onPress,bgStyle }) {
   return (
     <TouchableOpacity activeOpacity={0.8}
       style={{
         backgroundColor: "#000063",
         marginHorizontal: "10%",
         padding: 12,
-          ...bgStyle
+         marginTop:10,
+         marginBottom:25,
+          flex:1,...bgStyle
       }}
       onPress={onPress}>
       <Text
@@ -16,10 +18,11 @@ function PrimaryButton({ title, onPress,bgStyle }) {
           color: "#fff",
           textAlign: 'center',
           fontSize: 18,
+          flex: 1,
         }}>
         {title}
       </Text>
     </TouchableOpacity>
   );
 }
-export default PrimaryButton;
+export default SecondaryButton;

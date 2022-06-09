@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, Image, ImageBackground, StatusBar } from 'react-native';
 
-const Splash = () => {
-  return (
+class Splash extends Component {
+  componentDidMount(){
+    setTimeout(()=>this.props.navigation.navigate('ImageUploader'),3000)
+}
+  render() {
+    return (
     <View style={{ flex: 1 }}>
       <StatusBar backgroundColor="#000063" />
 
@@ -44,6 +48,8 @@ const Splash = () => {
       </ImageBackground>
     </View>
   );
+}
+
 }
 
 export default Splash;

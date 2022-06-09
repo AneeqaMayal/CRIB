@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StatusBar, FlatList, ScrollView } from 'react-native';
 import PrimaryButton from '../reuseable/PrimaryButton';
-const Data = [
+const data = [
   {
     id: '1',
     title: 'Name:',
@@ -33,33 +33,31 @@ class Cat extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <StatusBar backgroundColor="#fff" />
+
         {/* Criminal Image */}
         <Image
           style={{
             alignSelf: "center",
-            width:"80%",
+            width: "80%",
             borderRadius: 20,
-            marginTop:10
+            marginTop: 10
           }}
           source={require('../assets/images/user.png')}
         />
         {/* Criminal Details */}
-        <View style={{alignContent:"center"}}>
+        <View style={{ alignContent: "center" }}>
           <FlatList
-            showsHorizontalScrollIndicator={true}
-            horizontal={false}
-            data={Data}
-            keyExtractor={item => item.id}
+                         keyExtractor={item => item.id}
             renderItem={(item, index) => {
               return (
                 <View
                   style={{
-                    marginTop:20,
+                    marginTop: 20,
                   }}>
                   <View
                     style={{
                       flexDirection: "row",
-                    marginLeft:"10%"
+                      marginLeft: "10%"
                     }}>
                     <Text style={{
                       color: "#000",
@@ -71,7 +69,7 @@ class Cat extends Component {
                     <Text style={{
                       color: "#000",
                       fontSize: 15,
-                      marginHorizontal:"10%",
+                      marginHorizontal: "10%",
                     }}>
                       {item.item.title2}
                     </Text>
@@ -81,57 +79,57 @@ class Cat extends Component {
             }}
           />
         </View>
-
-        {/* Case Number */}
-        <Text style={{
-          color: "#000063",
-          fontFamily: "Poppins-Bold",
-          fontSize: 20,
-          marginTop: 5,
-          textAlign: "center"
-        }}>
-          Previous Case
-        </Text>
-        <Text style={{
-          color: "#000063",
-          fontFamily: "Poppins-Bold",
-          fontWeight: "bold",
-          fontSize: 18,
-          marginTop: 5,
-          textAlign: "center"
-        }}>
-          Section 302
-        </Text>
-
-        {/* Case Description */}
-        <Text style={{
-          color: "#000",
-          fontFamily: "Poppins-Bold",
-          fontSize: 18,
-          marginHorizontal: "10%",
-          marginTop:5
-        }}>
-          Case Description:
-        </Text>
-        <View style={{
-          width:"80%",
-          height: 170,
-          backgroundColor: "#F2F2F7",
-          justifyContent: "center",
-          alignSelf: "center",
-          marginTop:5,
-        }}>
+             {/* Case Number */}
           <Text style={{
-            fontSize: 18,
-            color: "#000",
-            marginHorizontal: "5%",
+            color: "#000063",
+            fontFamily: "Poppins-Bold",
+            fontSize: 20,
+            marginTop: 5,
+            textAlign: "center"
           }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent hendrerit fermentum massa quis efficitur. Nullam a ligula vitae quam sagittis pretium. Vivamus nec nunc eu lorem vulputate  nec augue.
+            Previous Case
           </Text>
-        </View>
+          <Text style={{
+            color: "#000063",
+            fontFamily: "Poppins-Bold",
+            fontWeight: "bold",
+            fontSize: 18,
+            marginTop: 5,
+            textAlign: "center"
+          }}>
+            Section 302
+          </Text>
 
-        {/* Details Save Button */}
-        <PrimaryButton title="Save" />
+          {/* Case Description */}
+          <Text style={{
+            color: "#000",
+            fontFamily: "Poppins-Bold",
+            fontSize: 18,
+            marginHorizontal: "10%",
+            marginTop: 5
+          }}>
+            Case Description:
+          </Text>
+          <View style={{
+            width: "80%",
+            height: 150,
+            backgroundColor: "#F2F2F7",
+            justifyContent: "center",
+            alignSelf: "center",
+            marginTop: 5,
+          }}>
+            <Text style={{
+              fontSize: 16,
+              color: "#000",
+              marginHorizontal: "5%",
+            }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent hendrerit fermentum massa quis efficitur. Nullam a ligula vitae quam sagittis pretium. Vivamus nec nunc eu lorem vulputate  nec augue.
+            </Text>
+          </View>
+
+          {/* Details Save Button */}
+          <PrimaryButton title="Save" bgStyle={{ marginTop: 10, marginBottom: 10 }} />
+
       </View>
     );
   }
