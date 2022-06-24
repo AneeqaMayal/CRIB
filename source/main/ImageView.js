@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StatusBar, FlatList, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  StatusBar,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import PrimaryButton from '../reuseable/PrimaryButton';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const data = [
   {
     id: '1',
@@ -28,22 +38,40 @@ const data = [
     title2: '31303-1234566-8',
   },
 ];
+
 class Cat extends Component {
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <ScrollView
+        contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
         <StatusBar backgroundColor="#fff" />
+
+        <TouchableOpacity
+          onPress={() => this.props.navigation.goBack()}
+          style={{
+            backgroundColor: '#fff',
+            elevation: 10,
+            alignSelf: 'flex-start',
+            marginTop: 10,
+            marginLeft: 20,
+            padding: 5,
+            borderRadius: 10,
+          }}>
+          <Ionicons name={'chevron-back-outline'} size={30} color="#000" />
+        </TouchableOpacity>
 
         {/* Criminal Image */}
         <Image
           style={{
             alignSelf: 'center',
             width: '90%',
-            borderRadius: 20,
+            borderRadius: 10,
             marginTop: 20,
           }}
+          resizeMode={'stretch'}
           source={require('../assets/images/user.png')}
         />
+
         {/* Criminal Details */}
         <View style={{alignContent: 'center'}}>
           <FlatList
@@ -81,6 +109,7 @@ class Cat extends Component {
             }}
           />
         </View>
+
         {/* Case Number */}
         <Text
           style={{
@@ -144,7 +173,7 @@ class Cat extends Component {
             bgStyle={{marginTop: 10, marginBottom: 10, marginBottom: '10%'}}
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
