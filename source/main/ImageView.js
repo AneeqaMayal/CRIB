@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -10,40 +10,13 @@ import {
 } from 'react-native';
 import PrimaryButton from '../reuseable/PrimaryButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Input from "../reuseable/Input"
 
-const data = [
-  {
-    id: '1',
-    title: 'Name:',
-    title2: ' Muhammad Faisal',
-  },
-  {
-    id: '2',
-    title: 'Father Name:',
-    title2: 'Muhammad Ali',
-  },
-  {
-    id: '3',
-    title: 'Phone No:',
-    title2: '+92312345678',
-  },
-  {
-    id: '4',
-    title: 'Address:',
-    title2: 'House 14,Scheme 1,Gulshan Usman,RYK',
-  },
-  {
-    id: '5',
-    title: 'CNIC:',
-    title2: '31303-1234566-8',
-  },
-];
-
-class Cat extends Component {
+class ImageView extends Component {
   render() {
     return (
       <ScrollView
-        contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
+        contentContainerStyle={{ flexGrow: 1, backgroundColor: '#fff' }}>
         <StatusBar backgroundColor="#fff" />
 
         <TouchableOpacity
@@ -73,41 +46,12 @@ class Cat extends Component {
         />
 
         {/* Criminal Details */}
-        <View style={{alignContent: 'center'}}>
-          <FlatList
-            keyExtractor={item => item.id}
-            renderItem={(item, index) => {
-              return (
-                <View
-                  style={{
-                    marginTop: 20,
-                  }}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      marginLeft: '5%',
-                    }}>
-                    <Text
-                      style={{
-                        color: '#000',
-                        fontWeight: 'bold',
-                        fontSize: 18,
-                      }}>
-                      {item.item.title}
-                    </Text>
-                    <Text
-                      style={{
-                        color: '#000',
-                        fontSize: 15,
-                        marginHorizontal: '5%',
-                      }}>
-                      {item.item.title2}
-                    </Text>
-                  </View>
-                </View>
-              );
-            }}
-          />
+        <View style={{ alignContent: 'center', marginTop: 5 }}>
+          <Input title={"Name"} />
+          <Input title={"Father Name"} />
+          <Input title={"Address"} />
+          <Input title={"Phone Number"} />
+          <Input title={"CNIC"} />
         </View>
 
         {/* Case Number */}
@@ -167,10 +111,14 @@ class Cat extends Component {
         </View>
 
         {/* Details Save Button */}
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <PrimaryButton
             title="Save"
-            bgStyle={{marginTop: 10, marginBottom: 10, marginBottom: '10%'}}
+            bgStyle={{
+              marginTop: 10,
+              marginBottom: 10,
+              marginBottom: '10%'
+            }}
           />
         </View>
       </ScrollView>
@@ -178,4 +126,4 @@ class Cat extends Component {
   }
 }
 
-export default Cat;
+export default ImageView;

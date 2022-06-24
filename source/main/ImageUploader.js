@@ -11,7 +11,7 @@ import Routes from '../data/remote/Routes';
 
 const webHandler = new WebHandler();
 
-class Cat extends Component {
+class ImageUploader extends Component {
   state = {
     image: '',
     id: '818653',
@@ -144,7 +144,7 @@ class Cat extends Component {
                 }}
               />
             </View>
-          ) : (
+           ):(
             <View>
               <TouchableOpacity
                 onPress={() => this.setState({image: ''})}
@@ -173,7 +173,7 @@ class Cat extends Component {
                 />
               </View>
             </View>
-          )}
+           )} 
         </View>
 
         {/* Image Uploader */}
@@ -189,4 +189,4 @@ class Cat extends Component {
   }
 }
 
-export default Cat;
+export default ImageUploader;
