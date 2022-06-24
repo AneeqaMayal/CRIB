@@ -38,9 +38,9 @@ class Cat extends Component {
         <Image
           style={{
             alignSelf: 'center',
-            width: '80%',
+            width: '90%',
             borderRadius: 20,
-            marginTop: 10,
+            marginTop: 20,
           }}
           source={require('../assets/images/user.png')}
         />
@@ -57,7 +57,7 @@ class Cat extends Component {
                   <View
                     style={{
                       flexDirection: 'row',
-                      marginLeft: '10%',
+                      marginLeft: '5%',
                     }}>
                     <Text
                       style={{
@@ -71,7 +71,7 @@ class Cat extends Component {
                       style={{
                         color: '#000',
                         fontSize: 15,
-                        marginHorizontal: '10%',
+                        marginHorizontal: '5%',
                       }}>
                       {item.item.title2}
                     </Text>
@@ -110,19 +110,20 @@ class Cat extends Component {
             color: '#000',
             fontFamily: 'Poppins-Bold',
             fontSize: 18,
-            marginHorizontal: '10%',
-            marginTop: 5,
+            marginHorizontal: '5%',
+            marginTop: 10,
           }}>
           Case Description:
         </Text>
         <View
           style={{
-            width: '80%',
+            width: '90%',
             height: 150,
             backgroundColor: '#F2F2F7',
             justifyContent: 'center',
             alignSelf: 'center',
             marginTop: 5,
+            borderRadius: 10,
           }}>
           <Text
             style={{
@@ -137,10 +138,12 @@ class Cat extends Component {
         </View>
 
         {/* Details Save Button */}
-        <PrimaryButton
-          title="Save"
-          bgStyle={{marginTop: 10, marginBottom: 10}}
-        />
+        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+          <PrimaryButton
+            title="Save"
+            bgStyle={{marginTop: 10, marginBottom: 10, marginBottom: '10%'}}
+          />
+        </View>
       </View>
     );
   }

@@ -6,7 +6,7 @@ function PrimaryButton({ title, onPress,bgStyle }) {
     <TouchableOpacity activeOpacity={0.8}
       style={{
         backgroundColor: "#000063",
-        marginHorizontal: "10%",
+        marginHorizontal: "5%",
         padding: 12,
         borderRadius:8,
           ...bgStyle
