@@ -5,12 +5,12 @@ const data = [
   {
     id: '1',
     title: 'Name:',
-    title2: ' Muhammad Faisal Ayaz',
+    title2: ' Muhammad Faisal',
   },
   {
     id: '2',
     title: 'Father Name:',
-    title2: 'Muhammad Ayaz'
+    title2: 'Muhammad Ali'
   },
   {
     id: '3',
