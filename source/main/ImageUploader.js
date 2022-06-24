@@ -5,10 +5,64 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import PrimaryButton from '../reuseable/PrimaryButton';
 import SecondaryButton from '../reuseable/SecondaryButton';
 import ImagePicker from 'react-native-image-crop-picker';
+// APIS Import --------------//
+import WebHandler from '../data/remote/WebHandler';
+import Routes from '../data/remote/Routes';
+
+const webHandler = new WebHandler();
 
 class Cat extends Component {
   state = {
     image: '',
+    id: '818653',
+  };
+
+  // Image Upload Api -------//
+  Image_Upload = () => {
+    const {image} = this.state;
+    if (image == '') {
+      // helper.showToast('Please select an image', 'red', '#fff');
+      console.log('ASd')
+      return;
+    }
+
+    const bodyParams = new FormData();
+    bodyParams.append('query_img', image);
+
+    webHandler.sendPostDataRequest(
+      Routes.IMAGE_UPLOAD,
+      bodyParams,
+      onSucess => {
+        // this.Data_Return()
+        console.log('Data Recived =========== >', onSucess);
+      },
+      onFaliure => {
+        console.log('Error Recived =========== >', onFaliure);
+      },
+    );
+  };
+
+  // Image Data Returned Api -------//
+  Data_Return = () => {
+    const {id} = this.state;
+    // if (image == '') {
+    //   helper.showToast('Please select an image', 'red', '#fff');
+    //   return;
+    // }
+
+    const bodyParams = new FormData();
+    bodyParams.append('feature_id', id);
+
+    webHandler.sendPostDataRequest(
+      Routes.GET_INFO,
+      bodyParams,
+      onSucess => {
+        this.props.navigation.navigate('ImageView')
+      },
+      onFaliure => {
+        console.log('Error Recived =========== >', onFaliure);
+      },
+    );
   };
 
   /// Image Picker Fuction ///
@@ -127,7 +181,7 @@ class Cat extends Component {
           <PrimaryButton
             title={'Upload'}
             bgStyle={{marginTop: '20%', marginBottom: '10%'}}
-            onPress={() => this.props.navigation.navigate('ImageView')}
+            onPress={() => this.Image_Upload()}
           />
         </View>
       </ScrollView>
