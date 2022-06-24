@@ -4,9 +4,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import PrimaryButton from '../reuseable/PrimaryButton';
 import SecondaryButton from '../reuseable/SecondaryButton';
-import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from "react-native-image-crop-picker";
 
-class Cat extends Component {
+class ImageUploader extends Component {
   state = {
     image: '',
   };
@@ -90,7 +90,7 @@ class Cat extends Component {
                 }}
               />
             </View>
-          ) : (
+           ):(
             <View>
               <TouchableOpacity
                 onPress={() => this.setState({image: ''})}
@@ -119,7 +119,7 @@ class Cat extends Component {
                 />
               </View>
             </View>
-          )}
+           )} 
         </View>
 
         {/* Image Uploader */}
@@ -135,4 +135,4 @@ class Cat extends Component {
   }
 }
 
-export default Cat;
+export default ImageUploader;
