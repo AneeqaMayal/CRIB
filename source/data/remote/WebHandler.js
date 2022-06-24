@@ -46,7 +46,7 @@ export default class WebHandler {
 
 
     /////////////////////////////// Post Method ////////////////////////////////
-    sendPostDataRequest(url, bodyParams, onSuccess, onFailure) {
+    sendPostDataRequest1(url, bodyParams, onSuccess, onFailure) {
 
           let headers = {
               'Accept': 'application/json',

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   Text,
   View,
@@ -10,13 +10,23 @@ import {
 } from 'react-native';
 import PrimaryButton from '../reuseable/PrimaryButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Input from "../reuseable/Input"
+import Input from '../reuseable/Input';
 
 class ImageView extends Component {
   render() {
+    let {
+      address,
+      case_description,
+      case_title,
+      cnic,
+      father_name,
+      image,
+      name,
+      phone_number,
+    } = this.props.route.params.params;
     return (
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, backgroundColor: '#fff' }}>
+        contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
         <StatusBar backgroundColor="#fff" />
 
         <TouchableOpacity
@@ -40,18 +50,19 @@ class ImageView extends Component {
             width: '90%',
             borderRadius: 10,
             marginTop: 20,
+            height: 200,
           }}
-          resizeMode={'stretch'}
-          source={require('../assets/images/user.png')}
+          resizeMode={'contain'}
+          source={{uri: image}}
         />
 
         {/* Criminal Details */}
-        <View style={{ alignContent: 'center', marginTop: 5 }}>
-          <Input title={"Name"} />
-          <Input title={"Father Name"} />
-          <Input title={"Address"} />
-          <Input title={"Phone Number"} />
-          <Input title={"CNIC"} />
+        <View style={{alignContent: 'center', marginTop: 5}}>
+          <Input title={name== null ? 'Name' : name} />
+          <Input title={father_name== null ? 'Father Name' : father_name} />
+          <Input title={address== null ? 'Address' : address} />
+          <Input title={phone_number== null ? 'Phone Number' : phone_number} />
+          <Input title={cnic== null ? 'CNIC' : cnic} />
         </View>
 
         {/* Case Number */}
@@ -93,7 +104,6 @@ class ImageView extends Component {
             width: '90%',
             height: 150,
             backgroundColor: '#F2F2F7',
-            justifyContent: 'center',
             alignSelf: 'center',
             marginTop: 5,
             borderRadius: 10,
@@ -103,21 +113,21 @@ class ImageView extends Component {
               fontSize: 16,
               color: '#000',
               marginHorizontal: '5%',
-            }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            hendrerit fermentum massa quis efficitur. Nullam a ligula vitae quam
-            sagittis pretium. Vivamus nec nunc eu lorem vulputate nec augue.
+              marginTop: 10,
+            }}
+            >
+            {case_description}
           </Text>
         </View>
 
         {/* Details Save Button */}
-        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <View style={{flex: 1, justifyContent: 'flex-end'}}>
           <PrimaryButton
             title="Save"
             bgStyle={{
               marginTop: 10,
               marginBottom: 10,
-              marginBottom: '10%'
+              marginBottom: '10%',
             }}
           />
         </View>

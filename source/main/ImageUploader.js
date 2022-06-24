@@ -8,6 +8,8 @@ import ImagePicker from 'react-native-image-crop-picker';
 // APIS Import --------------//
 import WebHandler from '../data/remote/WebHandler';
 import Routes from '../data/remote/Routes';
+// Loading Page ---------------//
+import LoadingPage from '../reuseable/LoadingPage';
 
 const webHandler = new WebHandler();
 
@@ -15,6 +17,7 @@ class ImageUploader extends Component {
   state = {
     image: '',
     id: '818653',
+    loading: false,
   };
 
   // Image Upload Api -------//
@@ -29,7 +32,7 @@ class ImageUploader extends Component {
     const bodyParams = new FormData();
     bodyParams.append('query_img', image);
 
-    webHandler.sendPostDataRequest(
+    webHandler.sendPostDataRequest1(
       Routes.IMAGE_UPLOAD,
       bodyParams,
       onSucess => {
@@ -45,6 +48,7 @@ class ImageUploader extends Component {
   // Image Data Returned Api -------//
   Data_Return = () => {
     const {id} = this.state;
+    this.setState({loading:true})
     // if (image == '') {
     //   helper.showToast('Please select an image', 'red', '#fff');
     //   return;
@@ -53,13 +57,15 @@ class ImageUploader extends Component {
     const bodyParams = new FormData();
     bodyParams.append('feature_id', id);
 
-    webHandler.sendPostDataRequest(
+    webHandler.sendPostDataRequest1(
       Routes.GET_INFO,
       bodyParams,
       onSucess => {
-        this.props.navigation.navigate('ImageView', {params: onSucess});
+        this.setState({loading:false})
+        this.props.navigation.navigate('ImageView', {params: onSucess.data});
       },
       onFaliure => {
+        this.setState({loading:false})
         console.log('Error Recived =========== >', onFaliure);
       },
     );
@@ -85,6 +91,7 @@ class ImageUploader extends Component {
     return (
       <ScrollView
         contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
+        {this.state.loading && <LoadingPage  />}
         {/* Header */}
         <View style={{marginTop: '20%'}}>
           <Text
@@ -144,7 +151,7 @@ class ImageUploader extends Component {
                 }}
               />
             </View>
-           ):(
+          ) : (
             <View>
               <TouchableOpacity
                 onPress={() => this.setState({image: ''})}
@@ -173,7 +180,7 @@ class ImageUploader extends Component {
                 />
               </View>
             </View>
-           )} 
+          )}
         </View>
 
         {/* Image Uploader */}
