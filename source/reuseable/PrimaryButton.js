@@ -8,6 +8,7 @@ function PrimaryButton({ title, onPress,bgStyle }) {
         backgroundColor: "#000063",
         marginHorizontal: "10%",
         padding: 12,
+        borderRadius:8,
           ...bgStyle
       }}
       onPress={onPress}>

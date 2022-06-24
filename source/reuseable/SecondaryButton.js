@@ -10,6 +10,7 @@ function SecondaryButton({ title, onPress,bgStyle }) {
         padding: 12,
          marginTop:10,
          marginBottom:25,
+         borderRadius:8,
           flex:1,...bgStyle
       }}
       onPress={onPress}>
