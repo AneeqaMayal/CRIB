@@ -22,7 +22,7 @@ class Cat extends Component {
     const {image} = this.state;
     if (image == '') {
       // helper.showToast('Please select an image', 'red', '#fff');
-      console.log('ASd')
+      console.log('ASd');
       return;
     }
 
@@ -57,7 +57,7 @@ class Cat extends Component {
       Routes.GET_INFO,
       bodyParams,
       onSucess => {
-        this.props.navigation.navigate('ImageView')
+        this.props.navigation.navigate('ImageView', {params: onSucess});
       },
       onFaliure => {
         console.log('Error Recived =========== >', onFaliure);
@@ -181,7 +181,7 @@ class Cat extends Component {
           <PrimaryButton
             title={'Upload'}
             bgStyle={{marginTop: '20%', marginBottom: '10%'}}
-            onPress={() => this.Image_Upload()}
+            onPress={() => this.Data_Return()}
           />
         </View>
       </ScrollView>
