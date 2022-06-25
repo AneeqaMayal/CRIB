@@ -11,7 +11,6 @@ import {
 import PrimaryButton from '../reuseable/PrimaryButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../reuseable/Input';
-// import RNViewShot from 'react-native-view-shot';
 import ViewShot, {captureScreen} from 'react-native-view-shot';
 import CameraRoll from '@react-native-community/cameraroll';
 import Helper from '../utils/Helper';

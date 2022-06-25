@@ -1,4 +1,4 @@
-package com.crib;
+package com.cbir;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
