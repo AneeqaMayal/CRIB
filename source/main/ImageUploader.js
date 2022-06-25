@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, ScrollView, Image} from 'react-native';
+import {Text, View, TouchableOpacity, ScrollView, Image,Alert} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import PrimaryButton from '../reuseable/PrimaryButton';
@@ -52,6 +52,25 @@ class ImageUploader extends Component {
       .done();
   };
 
+    //three button alert
+    createThreeButtonAlert = () =>
+        Alert.alert(
+            "Choose Your Image",
+            "From Camera or Gallery",
+            [
+                {
+                    text: "Gallery",
+                    onPress: () => this.getImagefromGallery()
+                },
+                {
+                    text: "Camera",
+                    onPress: () => this.getImagefromCamera(),
+                    style: "cancel"
+                },
+                { text: "Done", onPress: () => console.log("OK Pressed") }
+            ]
+        );
+
   // Image Data Returned Api -------//
   Data_Return = () => {
     const {id} = this.state;
@@ -77,9 +96,25 @@ class ImageUploader extends Component {
     );
   };
 
-  /// Image Picker Fuction ///
-  select = () => {
+  /// Image Picker Fuction Gallery ///
+  getImagefromGallery = () => {
     ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    })
+      .then(image => {
+        console.log(image);
+        this.setState({image: image.path});
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  /// Image Picker Fuction Camera ///
+  getImagefromCamera = () => {
+    ImagePicker.openCamera({
       width: 300,
       height: 400,
       cropping: true,
@@ -150,7 +185,7 @@ class ImageUploader extends Component {
               />
               <SecondaryButton
                 title={'Browse File'}
-                onPress={() => this.select()}
+                onPress={() => this.createThreeButtonAlert()}
                 bgStyle={{
                   width: '70%',
                   alignSelf: 'center',

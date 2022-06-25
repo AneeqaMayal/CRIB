@@ -14,13 +14,15 @@ import Input from '../reuseable/Input';
 // import RNViewShot from 'react-native-view-shot';
 import ViewShot, {captureScreen} from 'react-native-view-shot';
 import CameraRoll from '@react-native-community/cameraroll';
+import Helper from '../utils/Helper';
 
 export default function ImageView({route, navigation}) {
   const viewShotRef = useRef();
+  const helper = new Helper();
 
   async function handleDownload(uri) {
     CameraRoll.saveToCameraRoll(uri, 'photo')
-      .then(res => console.log(res))
+      .then(res => helper.showToast('ScreenShot Captured', '#000063', '#fff'))
       .catch(err => console.log(err));
   }
 
@@ -45,25 +47,24 @@ export default function ImageView({route, navigation}) {
     phone_number,
   } = route.params.params;
   return (
-    <View style={{flex:1}}>
+    <View style={{flex: 1}}>
       <ScrollView
         contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
         <StatusBar backgroundColor="#fff" />
 
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={{
-              backgroundColor: '#fff',
-              elevation: 10,
-              alignSelf: 'flex-start',
-              marginTop: 10,
-              marginLeft: 20,
-              padding: 5,
-              borderRadius: 10,
-            }}>
-            <Ionicons name={'chevron-back-outline'} size={30} color="#000" />
-          </TouchableOpacity>
-
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{
+            backgroundColor: '#fff',
+            elevation: 10,
+            alignSelf: 'flex-start',
+            marginTop: 10,
+            marginLeft: 20,
+            padding: 5,
+            borderRadius: 10,
+          }}>
+          <Ionicons name={'chevron-back-outline'} size={30} color="#000" />
+        </TouchableOpacity>
 
         <ViewShot ref={viewShotRef} options={{format: 'jpg', quality: 1.0}}>
           {/* Criminal Image */}
@@ -132,7 +133,7 @@ export default function ImageView({route, navigation}) {
               alignSelf: 'center',
               marginTop: 5,
               borderRadius: 10,
-              marginBottom:10
+              marginBottom: 10,
             }}>
             <Text
               style={{
@@ -149,7 +150,7 @@ export default function ImageView({route, navigation}) {
 
         {/* Details Save Button */}
       </ScrollView>
-      <View style={{ justifyContent: 'flex-end',backgroundColor:'#fff'}}>
+      <View style={{justifyContent: 'flex-end', backgroundColor: '#fff'}}>
         <PrimaryButton
           title="Save"
           bgStyle={{
