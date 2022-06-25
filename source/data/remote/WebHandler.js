@@ -66,13 +66,13 @@ export default class WebHandler {
 
           fetch(url, requestOptions)
               .then((response) => {
-              //    console.log("RESPOSNE==>", JSON.stringify(response))
+                 console.log("RESPOSNE==>", JSON.stringify(response))
               return response.json();
-                  // const respJson = response.data
+                  const respJson = response.data
                   // console.log("RESPOSNE==>", JSON.stringify(respJson))
                  
               }).then((res) => {
-                   console.log("RESPOSNE==>", JSON.stringify(res))
+                   console.log("RESPOSNE==>", res)
                   if (res.status == true) {
                       onSuccess(res)
                   } else {

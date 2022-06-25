@@ -8,49 +8,55 @@ import ImagePicker from 'react-native-image-crop-picker';
 // APIS Import --------------//
 import WebHandler from '../data/remote/WebHandler';
 import Routes from '../data/remote/Routes';
+import Helper from '../utils/Helper';
 // Loading Page ---------------//
 import LoadingPage from '../reuseable/LoadingPage';
 
 const webHandler = new WebHandler();
+const helper = new Helper();
 
 class ImageUploader extends Component {
   state = {
     image: '',
-    id: '818653',
+    id: '',
     loading: false,
   };
 
   // Image Upload Api -------//
   Image_Upload = () => {
     const {image} = this.state;
-    if (image == '') {
-      // helper.showToast('Please select an image', 'red', '#fff');
-      console.log('ASd');
-      return;
-    }
 
-    const bodyParams = new FormData();
-    bodyParams.append('query_img', image);
+    this.setState({loading: true});
+    let body = new FormData();
+    body.append('query_img', {
+      uri: image,
+      name: 'photo.png',
+      type: 'image/png',
+    });
+    body.append('Content-Type', 'image/png');
 
-    webHandler.sendPostDataRequest1(
-      Routes.IMAGE_UPLOAD,
-      bodyParams,
-      onSucess => {
-        // this.Data_Return()
-        console.log('Data Recived =========== >', onSucess);
+    fetch('http://35.89.39.202/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
       },
-      onFaliure => {
-        console.log('Error Recived =========== >', onFaliure);
-      },
-    );
+      body: body,
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log('response ===============>  ' + res);
+        this.setState({id: res});
+        this.Data_Return();
+      })
+      .catch(e => helper.showToast('Data not found', 'red', '#fff') + this.setState({loading:false}))
+      .done();
   };
 
   // Image Data Returned Api -------//
   Data_Return = () => {
     const {id} = this.state;
-    this.setState({loading:true})
+    this.setState({loading: true});
     // if (image == '') {
-    //   helper.showToast('Please select an image', 'red', '#fff');
     //   return;
     // }
 
@@ -61,11 +67,11 @@ class ImageUploader extends Component {
       Routes.GET_INFO,
       bodyParams,
       onSucess => {
-        this.setState({loading:false})
+        this.setState({loading: false});
         this.props.navigation.navigate('ImageView', {params: onSucess.data});
       },
       onFaliure => {
-        this.setState({loading:false})
+        this.setState({loading: false});
         console.log('Error Recived =========== >', onFaliure);
       },
     );
@@ -91,7 +97,7 @@ class ImageUploader extends Component {
     return (
       <ScrollView
         contentContainerStyle={{flexGrow: 1, backgroundColor: '#fff'}}>
-        {this.state.loading && <LoadingPage  />}
+        {this.state.loading && <LoadingPage />}
         {/* Header */}
         <View style={{marginTop: '20%'}}>
           <Text
@@ -188,7 +194,7 @@ class ImageUploader extends Component {
           <PrimaryButton
             title={'Upload'}
             bgStyle={{marginTop: '20%', marginBottom: '10%'}}
-            onPress={() => this.Data_Return()}
+            onPress={() => this.Image_Upload()}
           />
         </View>
       </ScrollView>
